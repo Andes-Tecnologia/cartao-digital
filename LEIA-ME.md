@@ -23,3 +23,9 @@
 - Os links de WhatsApp usam a API pública `wa.me` e o vCard é gerado diretamente no navegador.
 - O QR Code é requisitado a `api.qrserver.com`. A URL pública é enviada ao serviço para gerar a imagem. Se quiser evitar serviço externo, substitua por gerador local ou biblioteca hospedada no próprio domínio.
 - A imagem de capa é derivada de uma captura de tela. Para um resultado de produção ideal, exporte separadamente o fundo, a foto de perfil e a logo em boa resolução.
+
+## Layout responsivo (ANDES-500)
+
+- A altura da capa acompanha a altura útil do navegador (`svh`), com limites mínimo e máximo. A imagem permanece inteira, sem distorção.
+- Espaçamentos, ícones e botões foram compactados para priorizar o cartão inteiro na tela.
+- Em telas muito baixas, no modo horizontal ou com texto ampliado, a página permite rolagem para preservar o acesso ao conteúdo. Não há bloqueio de rolagem nem escala global da página.

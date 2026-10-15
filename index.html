@@ -32,6 +32,43 @@ button,a{-webkit-tap-highlight-color:transparent}button{font:inherit;cursor:poin
 .dialog{border:0;border-radius:19px;padding:25px;width:min(calc(100% - 30px),375px);box-shadow:0 22px 80px #0007;text-align:center}.dialog::backdrop{background:#0009}.dialog h2{font-size:19px;margin:2px 0 8px}.dialog p{font-size:12px;line-height:1.6;color:#555}.dialog .close{position:absolute;right:14px;top:11px;background:none;border:0;font-size:25px}.qr{display:grid;place-items:center;margin:18px 0}.qr img{width:218px;height:218px}.qr-note{overflow-wrap:anywhere;font-size:11px;color:#666}.copy{background:var(--red);color:#fff;border:0;border-radius:10px;padding:12px 18px;font-weight:700}
 .toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);background:#171717;color:white;border-radius:12px;padding:12px 17px;font-size:12px;opacity:0;pointer-events:none;transition:.25s;max-width:90vw;text-align:center}.toast.visible{transform:translate(-50%,0);opacity:1}
 @media(max-width:540px){body{background:#fff}.shell{margin:0 auto;border-radius:0;border:0;box-shadow:none}.content{padding:35px 24px 25px}}@media(max-width:370px){.content{padding-inline:16px}.bubble{width:63px;height:63px}.bubble svg{width:29px;height:29px}.actions{gap:5px}.cta{gap:9px;padding:17px 14px}.cta-icon{flex-basis:45px}.cta-icon svg{width:45px;height:45px}.cta strong{font-size:16px}.cta small{font-size:11px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+
+/* ANDES-500: compact layout based on the usable viewport height.
+   Natural document flow preserves access on short screens and with text zoom. */
+.shell{min-height:100svh}
+.hero{aspect-ratio:auto;height:clamp(180px,calc(100vh - 450px),460px);height:clamp(180px,calc(100svh - 450px),460px);background-size:contain;background-position:center;background-color:#e5e5e5}
+.nameplate{margin-top:0;padding:15px 16px 13px}
+h1{font-size:clamp(22px,5.6vw,28px);white-space:normal;overflow-wrap:anywhere;margin-bottom:6px}
+.role{font-size:12px;letter-spacing:.14em}
+.content{padding:18px 20px max(12px,env(safe-area-inset-bottom))}
+.actions{gap:10px;margin-bottom:16px}
+.action{min-height:80px;gap:6px;padding:0}
+.bubble{width:52px;height:52px}
+.bubble svg{width:27px;height:27px}
+.cta{min-height:108px;padding:14px;gap:10px;border-radius:18px}
+.cta-icon{flex-basis:36px;align-self:center}
+.cta-icon svg{width:36px;height:36px}
+.cta strong{font-size:17px;line-height:1.2;margin-bottom:6px}
+.cta small{font-size:12px;line-height:1.4}
+.cta-arrow{flex-basis:30px;height:30px;align-self:center}
+.cta-arrow svg{width:20px}
+.secondary{gap:8px;margin:12px 0}
+.secondary button{min-height:44px;padding:6px;font-size:12px}
+.site{font-size:clamp(13px,3.6vw,17px);margin:10px 0 0;overflow-wrap:anywhere}
+.fine{margin:7px 0 0}
+@media(max-width:370px){
+  .content{padding-inline:14px}
+  .cta{gap:8px;padding:12px}
+  .cta-icon{flex-basis:28px}
+  .cta-icon svg{width:28px;height:28px}
+  .cta strong{font-size:16px}
+}
+@media(max-height:650px){
+  .nameplate{padding-block:12px 10px}
+  .content{padding-top:14px}
+  .actions{margin-bottom:12px}
+  .cta{min-height:100px}
+}
 </style>
 </head>
 <body>
