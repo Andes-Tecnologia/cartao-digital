@@ -58,7 +58,7 @@ O nome da interface pode variar. Se necessário, consulte o endereço nas config
 │   ├── bg-code.jpg                # Fundo da capa
 │   ├── joao-carlos-almeida.png     # Retrato sem fundo
 │   ├── rocket.png                 # Ícone da chamada de projeto
-│   ├── compartilhamento.jpg       # Prévia de compartilhamento
+│   ├── compartilhamento-v2.jpg    # Prévia de compartilhamento
 │   ├── capa-andes.webp            # Referência visual original
 │   └── capa-andes-sem-mock.webp    # Composição anterior, preservada
 └── README.md
@@ -77,6 +77,7 @@ Em `index.html`, procure `const CONFIG`:
 | `email` | Endereço de e-mail. |
 | `website` | Site do botão principal e do contato exportado. |
 | `publicUrl` | Endereço do cartão para compartilhar e gerar o QR Code; vazio usa a URL atual, sem parâmetros ou fragmento. |
+| `shareDescription` | Texto enviado ao compartilhamento nativo. |
 | `whatsappMessage` | Mensagem inicial da conversa. |
 
 Alguns dados estão no HTML ou no JavaScript fora de `CONFIG`. Revise também:
@@ -109,20 +110,20 @@ A fonte Montserrat é carregada pelo Google Fonts; Arial e a fonte sem serifa do
 
 O projeto pode ser hospedado em um servidor de arquivos estáticos. Envie `index.html` e `assets/` juntos, mantendo os caminhos relativos.
 
-**URL proposta para esta instalação:**
+**URL configurada para esta instalação:**
 
 ```text
 https://www.andestecnologia.com.br/cartao-de-visita/joao-carlos-almeida/
 ```
 
-Esse endereço é uma sugestão de publicação, não uma confirmação de demonstração disponível. Para usá-lo, coloque os arquivos nessa pasta do servidor e ajuste:
+Esse endereço está configurado no cartão; isso não confirma que a página já foi publicada. Para usá-lo, coloque os arquivos nessa pasta do servidor e ajuste:
 
 1. `CONFIG.publicUrl` para a URL definitiva.
 2. `og:url` para o mesmo endereço.
 3. `og:image` para a URL HTTPS absoluta da imagem de compartilhamento.
 4. Título, descrição, contatos e links para os dados que serão publicados.
 
-Os metadados no código ainda contêm o caminho anterior `/c/joao/`; revise-os antes de publicar. A mudança descrita aqui não altera a configuração da página.
+A URL canônica, os metadados de compartilhamento e `CONFIG.publicUrl` usam esse endereço. A prévia dedicada está em `assets/compartilhamento-v2.jpg` (1200 × 630 pixels). Publique a imagem junto com a página. Mesmo no ambiente local, o compartilhamento e o QR Code apontam para essa URL pública enquanto `CONFIG.publicUrl` estiver preenchido.
 
 Depois da publicação em HTTPS, confira os contatos, a importação do vCard, o compartilhamento e a leitura do QR Code por outro aparelho. Aplicativos podem manter a prévia de compartilhamento em cache.
 
