@@ -59,6 +59,7 @@ O nome da interface pode variar. Se necessário, consulte o endereço nas config
 │   ├── joao-carlos-almeida.png     # Retrato sem fundo
 │   ├── rocket.png                 # Ícone da chamada de projeto
 │   ├── compartilhamento-v2.jpg    # Prévia de compartilhamento
+│   ├── qrcode-cartao-joao-carlos.jpg # QR Code personalizado
 │   ├── capa-andes.webp            # Referência visual original
 │   └── capa-andes-sem-mock.webp    # Composição anterior, preservada
 └── README.md
@@ -76,7 +77,7 @@ Em `index.html`, procure `const CONFIG`:
 | `phone` | Número de WhatsApp com DDI e DDD, somente dígitos. |
 | `email` | Endereço de e-mail. |
 | `website` | Site do botão principal e do contato exportado. |
-| `publicUrl` | Endereço do cartão para compartilhar e gerar o QR Code; vazio usa a URL atual, sem parâmetros ou fragmento. |
+| `publicUrl` | Endereço do cartão para compartilhar e copiar; vazio usa a URL atual, sem parâmetros ou fragmento. Não altera a imagem do QR Code. |
 | `shareDescription` | Texto enviado ao compartilhamento nativo. |
 | `whatsappMessage` | Mensagem inicial da conversa. |
 
@@ -100,7 +101,15 @@ Para conferir no celular, toque em **Salvar contato**, abra o arquivo caso seja 
 
 Quando o navegador disponibiliza o compartilhamento nativo, o botão abre essa interface. Caso contrário, ou se ela falhar, abre uma janela com QR Code e opção de copiar o link. Cancelar o compartilhamento nativo encerra a ação.
 
-O QR Code é uma imagem requisitada a `api.qrserver.com`, usando `CONFIG.publicUrl` ou a URL atual. Essa URL é enviada ao serviço externo quando a página carrega. Em desenvolvimento, ela pode ser um endereço local, acessível apenas na mesma rede. A geração do QR Code exige acesso ao serviço; não há biblioteca local de QR Code no projeto.
+O QR Code é a imagem local `assets/qrcode-cartao-joao-carlos.jpg`, exibida inteira e sem geração por serviço externo. O conteúdo codificado foi conferido e aponta para:
+
+```text
+https://andestecnologia.com.br/cartao-de-visita/joao-carlos-almeida/
+```
+
+A imagem usa o domínio sem `www`; `CONFIG.publicUrl` usa o domínio com `www`. Na verificação da integração, os dois endereços retornaram o mesmo conteúdo. Mantenha ambos acessíveis ou configure um redirecionamento ao alterar a hospedagem.
+
+Mudar `CONFIG.publicUrl` não atualiza esse QR Code. Se o endereço de destino mudar, forneça uma nova imagem, confira seu conteúdo com um leitor e substitua o arquivo. Preserve as margens de leitura, o contraste e a proporção. O QR é estático: o projeto não oferece redirecionamento editável ou métricas de leitura.
 
 A cópia de link usa a API de área de transferência e pode depender de HTTPS e das permissões do navegador. Se falhar, a página orienta a copiar o endereço exibido.
 
@@ -123,7 +132,7 @@ Esse endereço está configurado no cartão; isso não confirma que a página j�
 3. `og:image` para a URL HTTPS absoluta da imagem de compartilhamento.
 4. Título, descrição, contatos e links para os dados que serão publicados.
 
-A URL canônica, os metadados de compartilhamento e `CONFIG.publicUrl` usam esse endereço. A prévia dedicada está em `assets/compartilhamento-v2.jpg` (1200 × 630 pixels). Publique a imagem junto com a página. Mesmo no ambiente local, o compartilhamento e o QR Code apontam para essa URL pública enquanto `CONFIG.publicUrl` estiver preenchido.
+A URL canônica, os metadados de compartilhamento e `CONFIG.publicUrl` usam esse endereço. A prévia dedicada está em `assets/compartilhamento-v2.jpg` (1200 × 630 pixels). Publique a imagem junto com a página. Mesmo no ambiente local, o compartilhamento usa `CONFIG.publicUrl`; o QR Code mantém o endereço gravado na imagem. Publique também o arquivo do QR personalizado.
 
 Depois da publicação em HTTPS, confira os contatos, a importação do vCard, o compartilhamento e a leitura do QR Code por outro aparelho. Aplicativos podem manter a prévia de compartilhamento em cache.
 
