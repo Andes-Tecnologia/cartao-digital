@@ -12,7 +12,8 @@
 ## Conteúdo
 
 - `index.html`: página completa (HTML, CSS e JavaScript num único arquivo).
-- `assets/capa-andes.webp`: recorte da **imagem de referência enviada** contendo a logo e retrato, para preservar a aparência. Recomenda-se substituir futuramente por exportação original em alta definição, sem bordas do mockup.
+- `assets/capa-andes-sem-mock.webp`: capa usada na página, editada para remover bordas e recorte superior do celular (ANDES-499).
+- `assets/capa-andes.webp`: imagem original de referência, preservada.
 - `assets/compartilhamento.jpg`: imagem para prévia WhatsApp/LinkedIn (Open Graph).
 
 ## Observações
