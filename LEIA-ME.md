@@ -2,7 +2,7 @@
 
 ## Publicação
 
-1. Abra `index.html` e procure `const CONFIG`. Preencha `phone` e `email` com seus dados reais.
+1. Abra `index.html` e procure `const CONFIG`. Confira `phone` e `email`, já preenchidos com os contatos fornecidos.
 2. Faça o upload da pasta `c/joao` para o domínio, mantendo `index.html` e a pasta `assets` juntos. Endereço sugerido: `https://www.andestecnologia.com.br/c/joao/`.
 3. Caso escolha outra URL, ajuste as tags `og:image`, `og:url` no `<head>` e `CONFIG.publicUrl`.
 4. Abra o endereço **https** em um celular, teste WhatsApp, e-mail, salvar contato e compartilhar.
@@ -22,7 +22,7 @@
 
 ## Observações
 
-- Nenhum telefone ou e-mail foi inventado. Campos vazios mostram aviso até serem configurados.
+- Contatos configurados: WhatsApp +55 (11) 4420-1267 e e-mail joaocarlos@andestecnologia.com.br. A chamada de projeto abre https://andestecnologia.com.br/#contato.
 - A página estática não exige backend.
 - Os links de WhatsApp usam a API pública `wa.me` e o vCard é gerado diretamente no navegador.
 - O QR Code é requisitado a `api.qrserver.com`. A URL pública é enviada ao serviço para gerar a imagem. Se quiser evitar serviço externo, substitua por gerador local ou biblioteca hospedada no próprio domínio.
