@@ -12,8 +12,12 @@
 ## Conteúdo
 
 - `index.html`: página completa (HTML, CSS e JavaScript num único arquivo).
-- `assets/capa-andes-sem-mock.webp`: capa usada na página, editada para remover bordas e recorte superior do celular (ANDES-499).
-- `assets/capa-andes.webp`: imagem original de referência, preservada.
+- `assets/bg-code.jpg`: fundo da capa, com camada clara aplicada em CSS.
+- `assets/joao-carlos-almeida.png`: retrato transparente, posicionado independentemente do fundo.
+- `assets/rocket.png`: ícone da chamada para orçamento.
+- `assets/capa-andes-sem-mock.webp`: versão anterior da capa (ANDES-499), preservada.
+- `assets/andes-tecnologia-logo.png`: logo original, exibida como camada independente na capa.
+- `assets/capa-andes.webp`: referência original, preservada.
 - `assets/compartilhamento.jpg`: imagem para prévia WhatsApp/LinkedIn (Open Graph).
 
 ## Observações
@@ -22,10 +26,10 @@
 - A página estática não exige backend.
 - Os links de WhatsApp usam a API pública `wa.me` e o vCard é gerado diretamente no navegador.
 - O QR Code é requisitado a `api.qrserver.com`. A URL pública é enviada ao serviço para gerar a imagem. Se quiser evitar serviço externo, substitua por gerador local ou biblioteca hospedada no próprio domínio.
-- A imagem de capa é derivada de uma captura de tela. Para um resultado de produção ideal, exporte separadamente o fundo, a foto de perfil e a logo em boa resolução.
+- A capa usa fundo e retrato separados, com detalhe vermelho em CSS (`clip-path`). A logo original também é exibida separadamente, mantendo sua proporção.
 
 ## Layout responsivo (ANDES-500)
 
-- A altura da capa acompanha a altura útil do navegador (`svh`), com limites mínimo e máximo. A imagem permanece inteira, sem distorção.
+- A altura da capa acompanha a altura útil do navegador (`svh`), com limites mínimo e máximo. A foto mantém sua proporção e fica posicionada independentemente do fundo.
 - Espaçamentos, ícones e botões foram compactados para priorizar o cartão inteiro na tela.
 - Em telas muito baixas, no modo horizontal ou com texto ampliado, a página permite rolagem para preservar o acesso ao conteúdo. Não há bloqueio de rolagem nem escala global da página.

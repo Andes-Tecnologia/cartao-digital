@@ -22,7 +22,7 @@
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#fcfcfc;font-family:Montserrat,Arial,sans-serif;color:var(--black);min-height:100vh}
 button,a{-webkit-tap-highlight-color:transparent}button{font:inherit;cursor:pointer}a{color:inherit;text-decoration:none}button:focus-visible,a:focus-visible{outline:3px solid #1d69fd;outline-offset:4px}
 .shell{width:min(100%,490px);min-height:100vh;margin:0 auto;overflow:hidden;background:#fcfcfc}
-.hero{height:auto;aspect-ratio:588/556;position:relative;background:#ccc url('assets/capa-andes-sem-mock.webp') center top/cover no-repeat;overflow:hidden}
+.hero{height:auto;aspect-ratio:588/556;position:relative;background:#e7e8ea;overflow:hidden}
 .nameplate{position:relative;background:white;margin-top:-26px;transform:skewY(-3deg);padding:34px 20px 23px;text-align:center;box-shadow:0 9px 20px #11111113}
 .nameplate>*{transform:skewY(3deg)}h1{font-size:clamp(22px,5.6vw,31px);font-weight:800;letter-spacing:-.055em;margin:0 0 9px;line-height:1.12;white-space:nowrap}.role{font-size:clamp(11px,2.6vw,15px);letter-spacing:.19em;color:#45474c;margin:0;font-weight:500}
 .content{padding:36px 24px 22px}.actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:35px}
@@ -36,7 +36,13 @@ button,a{-webkit-tap-highlight-color:transparent}button{font:inherit;cursor:poin
 /* ANDES-500: compact layout based on the usable viewport height.
    Natural document flow preserves access on short screens and with text zoom. */
 .shell{min-height:100svh}
-.hero{aspect-ratio:auto;height:clamp(180px,calc(100vh - 450px),460px);height:clamp(180px,calc(100svh - 450px),460px);background-size:contain;background-position:center;background-color:#e5e5e5}
+.hero{aspect-ratio:auto;height:clamp(180px,calc(100vh - 450px),460px);height:clamp(180px,calc(100svh - 450px),460px);isolation:isolate}
+/* Independent layers keep the portrait and brand adaptable to short screens. */
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(#ffffffbf,#ffffffbf),url('assets/bg-code.jpg') center/cover no-repeat}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(135deg,#f01b30,#b4071b);clip-path:polygon(100% 20%,100% 100%,36% 100%)}
+.hero-photo{position:absolute;right:3%;bottom:0;height:96%;width:auto;max-width:64%;object-fit:contain;object-position:right bottom}
+.hero-logo{position:absolute;top:10%;left:5%;width:51%;height:auto;object-fit:contain}
+.cta-icon img{display:block;width:100%;height:auto}
 .nameplate{margin-top:0;padding:15px 16px 13px}
 h1{font-size:clamp(22px,5.6vw,28px);white-space:normal;overflow-wrap:anywhere;margin-bottom:6px}
 .role{font-size:12px;letter-spacing:.14em}
@@ -73,7 +79,10 @@ h1{font-size:clamp(22px,5.6vw,28px);white-space:normal;overflow-wrap:anywhere;ma
 </head>
 <body>
 <main class="shell" aria-label="Cartão de visitas João Carlos Almeida">
-<div class="hero" role="img" aria-label="Logo da Andes Tecnologia e fotografia de João Carlos Almeida sobre fundo de desenvolvimento de software"></div>
+<div class="hero">
+  <img class="hero-logo" src="assets/andes-tecnologia-logo.png" width="2364" height="1008" alt="Andes Tecnologia">
+  <img class="hero-photo" src="assets/joao-carlos-almeida.png" width="276" height="345" alt="João Carlos Almeida" fetchpriority="high">
+</div>
 <header class="nameplate"><div><h1 id="person-name">João Carlos Almeida</h1><p class="role" id="person-role">DIRETOR DE TECNOLOGIA</p></div></header>
 <section class="content" aria-label="Formas de contato">
 <div class="actions">
@@ -81,7 +90,7 @@ h1{font-size:clamp(22px,5.6vw,28px);white-space:normal;overflow-wrap:anywhere;ma
 <a href="https://www.andestecnologia.com.br/" class="action" id="website" target="_blank" rel="noopener noreferrer" aria-label="Visitar site da Andes"><span class="bubble"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M10.5 13.5a5 5 0 0 0 7.1 0l2.2-2.2a5 5 0 0 0-7.1-7.1l-1.3 1.3"/><path d="M13.5 10.5a5 5 0 0 0-7.1 0l-2.2 2.2a5 5 0 0 0 7.1 7.1l1.3-1.3"/></svg></span><span>Visite nosso<br>site</span></a>
 <a href="#" class="action" id="whatsapp" aria-label="Conversar pelo WhatsApp"><span class="bubble whatsapp"><svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 3A12.8 12.8 0 0 0 5 22.5L3.3 29l6.7-1.7A12.9 12.9 0 1 0 16 3Zm0 23.4c-2 0-4-.6-5.6-1.6l-.4-.2-3.9 1 1-3.8-.2-.4A10.6 10.6 0 1 1 16 26.4Zm5.8-7.9c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2c-.2.3-.8 1-1 1.1-.2.2-.4.2-.7 0-.4-.2-1.5-.6-2.9-1.8-1.1-1-1.8-2.1-2-2.4-.2-.4 0-.5.1-.7l.5-.6.3-.6c.1-.2 0-.4 0-.6l-1-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.5s-1.1 1-1.1 2.5 1.1 2.9 1.3 1.5 3 4.1 7.2 5.7 1 .4 1.9.6 2.5.5c.8-.1 1.9-.8 2.1-1.6.3-.8.3-1.5.2-1.6-.1-.1-.3-.2-.7-.4Z"/></svg></span><span>WhatsApp</span></a>
 </div>
-<button class="cta" id="cta" type="button"><span class="cta-icon" aria-hidden="true"><svg viewBox="0 0 64 64" fill="#fff" stroke="#fff" stroke-width="2"><path d="M39 6c-15 2-25 12-29 27l11 11c15-4 25-14 27-29L39 6Z"/><circle cx="36" cy="18" r="6" fill="#e51224"/><path d="M12 35 5 44l14 1M27 50l-1 9 10-8M13 49l-6 9 9-6" stroke-linejoin="round"/></svg></span><span class="cta-text"><strong>Vamos tirar seu projeto do papel?</strong><small>Sites, sistemas, e-commerce, plataformas e automações para impulsionar o seu negócio.</small></span><span class="cta-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16m-7-7 7 7-7 7"/></svg></span></button>
+<button class="cta" id="cta" type="button"><span class="cta-icon" aria-hidden="true"><img src="assets/rocket.png" width="68" height="68" alt=""></span><span class="cta-text"><strong>Vamos tirar seu projeto do papel?</strong><small>Sites, sistemas, e-commerce, plataformas e automações para impulsionar o seu negócio.</small></span><span class="cta-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16m-7-7 7 7-7 7"/></svg></span></button>
 <div class="secondary"><button id="save" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="12" cy="9" r="2"/><path d="M8 17c.4-3 7.6-3 8 0"/></svg> Salvar contato</button><button id="share" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="18" cy="5" r="3"/><circle cx="5" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m7.8 10.7 7.5-4.3m-7.5 7 7.5 4.3"/></svg> Compartilhar / QR</button></div>
 <p class="site"><a href="https://www.andestecnologia.com.br/" target="_blank" rel="noopener noreferrer">www.<b>andestecnologia</b>.com.br</a></p>
 <p class="fine">© <span id="year"></span> Andes Tecnologia</p>
